@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YÊU EM</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #FFC0CB; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            position: absolute;
+            top: 5%; 
+            color: red; 
+            font-size: 3.5rem; 
+        }
+
+        #flower-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('https://cdn.medigoapp.com/product/qq_0a93030668.webp'); 
+            background-size: cover;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh);
+            }
+            100% {
+                transform: translateY(110vh);
+            }
+        }
+
+        #heart {
+            position: absolute;
+            top: 60%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; 
+            height: 400px; 
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/nhachay-43b11.appspot.com/o/Polish_20240627_000930793.png?alt=media&token=8680ebca-a276-4947-84c0-484191f4ba3f'); 
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: orange;
+            text-align: center;
+            line-height: 1.2; 
+        }
+
+        @keyframes changeColor {
+            0% {
+                color: gold;
+            }
+            40% {
+                color: orange;
+            }
+            70% {
+                color: hotpink;
+            }
+            100% {
+                color: magenta; 
+            }
+        }
+
+        .changing-text {
+            animation: changeColor 0.7s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <h1>HUONG XINH GÁI💎</h1>
+    <div id="heart" class="changing-text">❤UÔI HUONG ĐÁNG YÊU VÃI</div>
+    <div id="flower-container"></div>
+    <audio id="background-music" loop>
+        <source src="https://firebasestorage.googleapis.com/v0/b/nhachay-43b11.appspot.com/o/Y2meta.app%20-%20I%20LOVE%20YOU%20BABY%20(Mood%20Edit%20Love)%20(320%20kbps).mp3?alt=media&token=9b080695-2748-49a1-a83d-211d6c3abdf1" type="audio/mpeg">
+    </audio>
+    <script>
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('background-music');
+            audio.play();
+        });
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.getElementById('flower-container').appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+
+        setInterval(createFlower, 300);
+
+        const texts = ["❤UÔI HUONG ĐÁNG YÊU VÃI", "XINH ĐẸP NHẤT THẾ GIỚI RỒI❤", "KHÔNG AI BẰNG HUONG:3", "HUONG 10 ĐIỂM QUÁ HOÀN HẢO⭐", "HUONG TUYỆT VỜI NHẤT🌟", "THẤY YÊU HUONG NHIỀU VCL=)))", "HUONG NHƯ NỮ THẦN TRÊN TRỜI CAO☀️", "TÔI CHỈ NGẮM NHÌN THÔI🐧"];
+        let textIndex = 0;
+
+        function changeText() {
+            const heart = document.getElementById('heart');
+            heart.innerText = texts[textIndex];
+            textIndex = (textIndex + 1) % texts.length;
+        }
+
+        setInterval(changeText, 1600); 
+    </script>
+</body>
+</html>
